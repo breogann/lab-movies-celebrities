@@ -6,4 +6,7 @@
     <p>plot: {{movies.plot}}</p>
     <p>cast: {{movies.cast}}</p>
   </li>
+  <form action="/movies/{{movies._id}}/delete" method="POST">
+    <Button type="submit">Delete</Button>
+  </form>
 </ul>

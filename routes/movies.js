@@ -40,4 +40,17 @@ router.get("/movies/:id", (req, res, next) => {
   });
 });
 
+router.post("/movies/:id/delete", (req, res, next) => {
+  const id = req.body._id;
+
+  movieSchema
+    .findByIdAndDelete(id)
+    .then(() => {
+      res.render("movies/movies-delete");
+    })
+    .catch((error) => {
+      next(error);
+    });
+});
+
 module.exports = router;
