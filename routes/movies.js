@@ -15,7 +15,9 @@ router.get("/movies", (req, res, next) => {
 });
 
 router.get("/movies/create", (req, res) => {
-  res.render("movies/create");
+  movieSchema.find().then((movie) => {
+    res.render("movies/create", movie);
+  });
 });
 
 router.post("/movies/create", (req, res, next) => {
