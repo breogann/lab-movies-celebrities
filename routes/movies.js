@@ -14,6 +14,13 @@ router.get("/movies", (req, res, next) => {
     });
 });
 
+router.get("/movies/:id", (req, res, next) => {
+  const id = req.params.id;
+  movieSchema.findById(id).then((movies) => {
+    res.render("movies/movie-details", { movies });
+  });
+});
+
 router.post("/movies/create", (req, res, next) => {
   const { title, genre, plot, cast } = req.body;
 
