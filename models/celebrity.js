@@ -4,21 +4,24 @@
 
 const mongoose = require("mongoose");
 
-const Celebrity = mongoose.model("Celebrity", {
-  name: {
-    type: String,
-    required: true,
-  },
-  occupation: {
-    type: String,
-    required: true,
-  },
-  catchPhrase: {
-    type: String,
-  },
-  timestamps: true,
-});
+const { Schema, model } = require("mongoose");
 
-const celebritySchema = new mongoose.Schema({ Celebrity });
+const celebritySchema = new Schema(
+  {
+    name: {
+      type: String,
+      require: true,
+    },
+    occupation: {
+      type: String,
+    },
+    catchPhrase: {
+      type: String,
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
 
-module.exports = celebritySchema;
+module.exports = model("Celebrity", celebritySchema);

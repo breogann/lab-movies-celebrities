@@ -32,8 +32,13 @@ app.use(favicon(path.join(__dirname, "public/images/favicon.ico")));
 
 // Mount base router on app, after setting up other middleware
 const baseRouter = require("./routes");
-
 app.use("/", baseRouter);
+
+const celebrities = require("./routes/celebrities");
+const movies = require("./routes/movies");
+
+app.use("/", celebrities);
+app.use("/", movies);
 
 // Catch 404 and render a not-found.hbs template
 app.use((req, res, next) => {
